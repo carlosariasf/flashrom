@@ -7558,7 +7558,7 @@ const struct flashchip flashchips[] = {
 		.bustype	= BUS_SPI,
 		.manufacture_id	= MACRONIX_ID,
 		.model_id	= MACRONIX_MX25L5121E,
-		.total_size	= 64,
+		.total_size	= 512,
 		.page_size	= 256,
 		/* MX25L5121E supports SFDP */
 		.feature_bits	= FEATURE_WRSR_WREN,
@@ -7568,19 +7568,19 @@ const struct flashchip flashchips[] = {
 		.block_erasers	=
 		{
 			{
-				.eraseblocks = { {4 * 1024, 16} },
+				.eraseblocks = { {4 * 1024, 128} },
 				.block_erase = spi_block_erase_20,
 			}, {
-				.eraseblocks = { {64 * 1024, 1} },
+				.eraseblocks = { {64 * 1024, 8} },
 				.block_erase = spi_block_erase_52,
 			}, {
-				.eraseblocks = { {64 * 1024, 1} },
+				.eraseblocks = { {64 * 1024, 8} },
 				.block_erase = spi_block_erase_d8,
 			}, {
-				.eraseblocks = { {64 * 1024, 1} },
+				.eraseblocks = { {512 * 1024, 1} },
 				.block_erase = spi_block_erase_60,
 			}, {
-				.eraseblocks = { {64 * 1024, 1} },
+				.eraseblocks = { {512 * 1024, 1} },
 				.block_erase = spi_block_erase_c7,
 			},
 		},
