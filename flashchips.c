@@ -7551,6 +7551,45 @@ const struct flashchip flashchips[] = {
 		.read		= spi_chip_read, /* Fast read (0x0B) supported, MX25L512E supports dual I/O */
 		.voltage	= {2700, 3600}, /* 2.35-3.6V for MX25V512(C) */
 	},
+	
+	{
+		.vendor		= "Macronix",
+		.name		= "MX25L5121E",
+		.bustype	= BUS_SPI,
+		.manufacture_id	= MACRONIX_ID,
+		.model_id	= MACRONIX_MX25L5121E,
+		.total_size	= 64,
+		.page_size	= 256,
+		/* MX25L5121E supports SFDP */
+		.feature_bits	= FEATURE_WRSR_WREN,
+		.tested		= TEST_OK_PREW,
+		.probe		= probe_spi_rdid,
+		.probe_timing	= TIMING_ZERO,
+		.block_erasers	=
+		{
+			{
+				.eraseblocks = { {4 * 1024, 16} },
+				.block_erase = spi_block_erase_20,
+			}, {
+				.eraseblocks = { {64 * 1024, 1} },
+				.block_erase = spi_block_erase_52,
+			}, {
+				.eraseblocks = { {64 * 1024, 1} },
+				.block_erase = spi_block_erase_d8,
+			}, {
+				.eraseblocks = { {64 * 1024, 1} },
+				.block_erase = spi_block_erase_60,
+			}, {
+				.eraseblocks = { {64 * 1024, 1} },
+				.block_erase = spi_block_erase_c7,
+			},
+		},
+		.printlock	= spi_prettyprint_status_register_bp1_srwd,
+		.unlock		= spi_disable_blockprotect,
+		.write		= spi_chip_write_256,
+		.read		= spi_chip_read, /* Fast read (0x0B) supported, MX25L5121E supports dual I/O */
+		.voltage	= {2700, 3600}, /* 2.35-3.6V for MX25V512(C) */
+	},
 
 	{
 		.vendor		= "Macronix",
@@ -7587,6 +7626,8 @@ const struct flashchip flashchips[] = {
 		.read		= spi_chip_read, /* Fast read (0x0B) supported, MX25L1006E supports dual I/O */
 		.voltage	= {2700, 3600},
 	},
+	
+	
 
 	{
 		.vendor		= "Macronix",
